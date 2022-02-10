@@ -31,6 +31,7 @@ export const GetStarted = ({ assetId }: GetStartedProps) => {
       >
         <DefiModalHeader
           headerImageSrc={osmosis}
+          headerImageWidth='68px'
           headerText={['defi.getStarted.header', { assetName: asset.name, maxApr }]}
         />
         <Box textAlign='center'>
