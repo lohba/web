@@ -29,7 +29,16 @@ const STEP_TO_ELEMENTS_MAPPING = {
   }
 }
 
-export const LearnMore = () => {
+type LearnMoreProps = {
+  assetId: string
+}
+
+export const LearnMore = ({ assetId }: LearnMoreProps) => {
+  // TODO: wire me up, parentheses are nice but let's get asset name from selectAssetNameById instead of this
+  const asset = (_ => ({
+    name: 'Osmo'
+  }))(assetId)
+
   const handleClose = () => 'TODO'
 
   const { nextStep, prevStep, activeStep } = useSteps({
@@ -78,7 +87,7 @@ export const LearnMore = () => {
           <Flex direction='column' alignItems='center'>
             <DefiModalHeader
               headerImageSrc={osmosis}
-              headerText={`defi.learnMore.headers.${activeStep - 1}`}
+              headerText={[`defi.learnMore.headers.${activeStep - 1}`, { assetName: asset.name }]}
               headerImageWidth={120}
             />
             <Box>
@@ -86,7 +95,7 @@ export const LearnMore = () => {
                 {STEP_TO_ELEMENTS_MAPPING[activeStep as 1 | 2 | 3].bodies.map((body, i) => (
                   <Box textAlign='left' key={i} mb='18px'>
                     <Text
-                      translation={body}
+                      translation={[body, { assetName: asset.name }]}
                       color='gray.500'
                       fontWeight='semibold'
                       fontSize='15px'
