@@ -15,7 +15,7 @@ export const DefiModalHeader = ({
 }: DefiModalHeaderProps) => (
   <>
     <Box textAlign='center'>
-      <Image src={headerImageSrc} width={headerImageWidth} />
+      <Image src={headerImageSrc} maxWidth={headerImageWidth} />
     </Box>
     <Box textAlign='center' pt='13px'>
       <Text translation={headerText} fontSize='18px' fontWeight='bold' />
