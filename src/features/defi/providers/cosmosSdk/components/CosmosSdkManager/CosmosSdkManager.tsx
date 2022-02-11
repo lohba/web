@@ -1,4 +1,5 @@
 import { GetStarted } from 'features/defi/components/GetStarted/GetStarted'
+import { LearnMore } from 'features/defi/components/LearnMore/LearnMore'
 import {
   DefiAction,
   DefiParams
@@ -15,5 +16,6 @@ export const CosmosSdkManager = ({ assetId = 'cosmoshub-3/slip44:118' }: CosmosS
   const params = useParams<DefiParams>()
 
   if (params.action === DefiAction.GetStarted) return <GetStarted assetId={assetId} />
+  if (params.action === 'learn-more') return <LearnMore assetId={assetId} />
   return null
 }

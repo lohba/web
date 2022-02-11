@@ -22,16 +22,10 @@ export const GetStarted = ({ assetId }: GetStartedProps) => {
   const maxApr = ASSET_ID_TO_MAX_APR['cosmoshub-3/slip44:118']
   return (
     <Box pt='51px' pb='20px' px='24px'>
-      <Flex
-        direction='column'
-        maxWidth='395px'
-        height='422px'
-        alignItems='center'
-        justifyContent='space-between'
-      >
+      <Flex direction='column' maxWidth='395px' alignItems='center' justifyContent='space-between'>
         <DefiModalHeader
           headerImageSrc={osmosis}
-          headerImageWidth='68px'
+          headerImageWidth={68}
           headerText={['defi.getStarted.header', { assetName: asset.name, maxApr }]}
         />
         <Box textAlign='center'>

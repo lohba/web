@@ -75,30 +75,44 @@ export const LearnMore = () => {
           alignItems='center'
           justifyContent='space-between'
         >
-          <DefiModalHeader
-            headerImageSrc={osmosis}
-            headerText={`defi.learnMore.headers.${activeStep - 1}`}
-            headerImageWidth='120px'
-          />
-          {STEP_TO_ELEMENTS_MAPPING[activeStep as 1 | 2 | 3].bodies.map((body, i) => (
-            <Box textAlign='left' key={i}>
-              <Text translation={body} color='gray.500' fontWeight='semibold' fontSize='15px' />
+          <Flex direction='column' alignItems='center'>
+            <DefiModalHeader
+              headerImageSrc={osmosis}
+              headerText={`defi.learnMore.headers.${activeStep - 1}`}
+              headerImageWidth={120}
+            />
+            <Box>
+              <Flex direction='column'>
+                {STEP_TO_ELEMENTS_MAPPING[activeStep as 1 | 2 | 3].bodies.map((body, i) => (
+                  <Box textAlign='left' key={i} mb='18px'>
+                    <Text
+                      translation={body}
+                      color='gray.500'
+                      fontWeight='semibold'
+                      fontSize='15px'
+                    />
+                  </Box>
+                ))}
+              </Flex>
             </Box>
-          ))}
-          <Box width='100%'>
-            <Button
-              size='lg'
-              zIndex={1}
-              width='100%'
-              colorScheme='blue'
-              onClick={handleNextOrCloseClick}
-            >
-              <Text translation={isLastStep ? 'defi.learnMore.close' : 'defi.learnMore.next'} />
-            </Button>
-          </Box>
-          <Box width='46px'>
-            <CarouselDots length={STEPS_LENGTH} activeIndex={activeStep} />
-          </Box>
+          </Flex>
+          <Flex width='100%' direction='column' justifyContent='center' alignItems='center'>
+            <Box width='100%'>
+              <Button
+                size='lg'
+                zIndex={1}
+                width='100%'
+                colorScheme='blue'
+                mb='20px'
+                onClick={handleNextOrCloseClick}
+              >
+                <Text translation={isLastStep ? 'defi.learnMore.close' : 'defi.learnMore.next'} />
+              </Button>
+            </Box>
+            <Box width='46px'>
+              <CarouselDots length={STEPS_LENGTH} activeIndex={activeStep} />
+            </Box>
+          </Flex>
         </Flex>
       </Box>
     </SlideTransition>
