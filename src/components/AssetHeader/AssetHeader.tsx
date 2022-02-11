@@ -70,7 +70,12 @@ export const AssetHeader: React.FC<AssetHeaderProps> = ({ assetId, accountId }) 
   const accountIds = useAppSelector(state => selectAccountIdsByAssetId(state, assetId))
   const singleAccount = accountIds && accountIds.length === 1 ? accountIds[0] : undefined
   const isLoaded = !!marketData
-  const { name, symbol, description, icon } = asset || {}
+  const {
+    name,
+    symbol,
+    description: { description, isTrusted },
+    icon
+  } = asset || {}
   useGetAssetDescriptionQuery(assetId)
   const { price } = marketData || {}
   const {
@@ -223,7 +228,11 @@ export const AssetHeader: React.FC<AssetHeaderProps> = ({ assetId, accountId }) 
           </Skeleton>
           <Collapse startingHeight={70} in={showDescription}>
             <SkeletonText isLoaded={isLoaded} noOfLines={4} spacing={2} skeletonHeight='20px'>
-              <SanitizedHtml color='gray.500' dirtyHtml={description} />
+              {isTrusted ? (
+                <RawText dangerouslySetInnerHTML={{ __html: description }}></RawText>
+              ) : (
+                <SanitizedHtml color='gray.500' dirtyHtml={description} />
+              )}
             </SkeletonText>
           </Collapse>
           <Button size='sm' onClick={handleToggle} mt='1rem'>
