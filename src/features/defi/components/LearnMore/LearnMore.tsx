@@ -17,18 +17,15 @@ const STEP_TO_ELEMENTS_MAPPING = {
       'defi.learnMore.bodies.amountStakingInfo',
       'defi.learnMore.bodies.withdrawInfo'
     ],
-    headerImageSrc: osmosis,
-    headerImageWidth: '120px'
+    headerImageSrc: osmosis
   },
   2: {
     bodies: ['defi.learnMore.bodies.unbondingInfo'],
-    headerImageSrc: osmosis,
-    headerImageWidth: '120px'
+    headerImageSrc: osmosis
   },
   3: {
     bodies: ['defi.learnMore.bodies.slashingInfo', 'defi.learnMore.bodies.partnerInfo'],
-    headerImageSrc: osmosis,
-    headerImageWidth: '120px'
+    headerImageSrc: osmosis
   }
 }
 
